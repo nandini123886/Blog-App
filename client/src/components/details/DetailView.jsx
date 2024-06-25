@@ -80,7 +80,7 @@ const DetailView = () => {
 
     return (
         <Container>
-            <Image src={post.picture || url} alt="post" />
+            <Image src={`/api${post.picture}` || url} alt="post" />
             <Box style={{ float: 'right' }}>
                 {   
                     account.username === post.username && 
