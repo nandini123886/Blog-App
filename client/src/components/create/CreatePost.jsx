@@ -98,7 +98,7 @@ const CreatePost = () => {
 
   return (
     <Container>
-      <Image src={url} alt="post" />
+      <Image src={`/api/${url}`} alt="post" />
 
       <StyledFormControl>
         <label htmlFor="fileInput">

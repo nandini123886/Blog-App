@@ -45,7 +45,7 @@ const Post = ({ post }) => {
 
     return (
         <Container>
-            <Image src={url} alt="post" />
+            <Image src={`/api/${url}`} alt="post" />
             <Text>{post.categories}</Text>
             <Heading>{addEllipsis(post.title, 20)}</Heading>
             <Text>Author: {post.username}</Text>

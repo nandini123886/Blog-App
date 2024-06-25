@@ -7,7 +7,7 @@ import {
   getPost,
   getAllPosts,
 } from "../controller/post-controller.js";
-import { uploadImage, getImage } from "../controller/image-controller.js";
+import {uploadImage, getImage} from "../controller/image-controller.js";
 import {
   newComment,
   getComments,

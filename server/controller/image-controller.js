@@ -1,9 +1,5 @@
 import grid from 'gridfs-stream';
 import mongoose from 'mongoose';
-
-// const url = 'http://localhost:3000';
-
-
 let gfs, gridfsBucket;
 const conn = mongoose.connection;
 conn.once('open', () => {
@@ -13,8 +9,6 @@ conn.once('open', () => {
     gfs = grid(conn.db, mongoose.mongo);
     gfs.collection('fs');
 });
-
-
 export const uploadImage = (request, response) => {
     if(!request.file) 
         return response.status(404).json("File not found");
@@ -26,9 +20,8 @@ export const uploadImage = (request, response) => {
 
 export const getImage = async (request, response) => {
     try {   
-        const file = await gfs.files.findOne({ filename: request.params.filename });
-        // const readStream = gfs.createReadStream(file.filename);
-        // readStream.pipe(response);
+        const file = await gfs.files.findOne({ filename:decodeURIComponent(request.params.filename)});
+      
         const readStream = gridfsBucket.openDownloadStream(file._id);
         readStream.pipe(response);
     } catch (error) {
